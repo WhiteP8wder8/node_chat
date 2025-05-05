@@ -10,12 +10,12 @@ const create = async (req, res) => {
   }
 
   if (isNameExist) {
-    return res.sendStatus(409).json({ message: 'User already exists' });
+    return res.status(409).json({ message: 'User already exists' });
   }
 
   await userService.createUser(name);
 
-  return res.sendStatus(200).json({ message: 'User was created!' });
+  return res.status(201).json({ message: 'User was created!' });
 };
 
 export const userController = {

@@ -1,9 +1,9 @@
 import { roomsService } from '../services/rooms.service.js';
 
 const getAllRooms = async (req, res) => {
-  await roomsService.getAllRooms();
+  const rooms = await roomsService.getAllRooms();
 
-  res.status(200).send('Found all rooms!');
+  res.status(200).send(rooms);
 };
 
 const createRoom = async (req, res) => {
@@ -31,14 +31,14 @@ const updateRoom = async (req, res) => {
   res.sendStatus(204);
 };
 
-const removeRoom = async (req, res) => {
+const deleteRoom = async (req, res) => {
   const { roomId } = req.params;
 
   if (!roomId) {
     return res.sendStatus(400);
   }
 
-  await roomsService.removeRoom(roomId);
+  await roomsService.deleteRoom(roomId);
 
   res.sendStatus(204);
 };
@@ -47,5 +47,5 @@ export const roomController = {
   getAllRooms,
   createRoom,
   updateRoom,
-  removeRoom,
+  deleteRoom,
 };
