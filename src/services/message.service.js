@@ -1,5 +1,4 @@
-import { Message } from "../models/message.js";
-
+import { Message } from '../models/message.js';
 
 const getAllMessagesInRoom = (roomId) => {
   return Message.findAll({ where: { roomId } });

@@ -1,4 +1,4 @@
-import { Room } from "../models/room.js";
+import { Room } from '../models/room.js';
 
 const getAllRooms = () => {
   return Room.findAll();
@@ -15,7 +15,7 @@ const deleteRoom = (id) => {
 const updateRoom = (id, title, description) => {
   if (!id) {
     throw new Error('Room id is required');
-  };
+  }
 
   const updatedData = {};
 

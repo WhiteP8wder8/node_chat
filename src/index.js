@@ -27,13 +27,13 @@ const wss = new WebSocketServer({ server });
 
 const rooms = {};
 
-wss.on('connection', ws => {
+wss.on('connection', (ws) => {
   ws.on('message', async (message) => {
     const { roomId } = JSON.parse(message);
 
-    if(!rooms[roomId]) {
+    if (!rooms[roomId]) {
       rooms[roomId] = [];
-    };
+    }
 
     rooms[roomId].push(ws);
 
@@ -47,7 +47,7 @@ wss.on('connection', ws => {
   ws.on('close', () => {
     for (const roomId in rooms) {
       rooms[roomId] = rooms[roomId].filter((client) => client !== ws);
-    };
+    }
   });
 });
 
